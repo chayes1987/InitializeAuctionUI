@@ -20,7 +20,14 @@ public class InitializeAuctionUI {
             String auctionRunningEvt = new String(subscriber.recv());
             System.out.println("REC: " + auctionRunningEvt);
             publishAcknowledgement(auctionRunningEvt);
+            String id = parseMessage(auctionRunningEvt, "<id>", "</id>");
         }
+    }
+
+    private String parseMessage(String message, String startTag, String endTag){
+        int startIndex = message.indexOf(startTag) + startTag.length();
+        String substring = message.substring(startIndex);
+        return substring.substring(0, substring.lastIndexOf(endTag));
     }
 
     private void publishAcknowledgement(String message){

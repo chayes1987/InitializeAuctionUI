@@ -32,8 +32,8 @@
       <file leaf-file-name="InitializeAuctionUI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/InitializeAuctionUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.51965064" vertical-offset="0" max-vertical-offset="687">
-              <caret line="21" column="54" selection-start-line="21" selection-start-column="54" selection-end-line="21" selection-end-column="54" />
+            <state vertical-scroll-proportion="0.5443959" vertical-offset="0" max-vertical-offset="748">
+              <caret line="22" column="54" selection-start-line="22" selection-start-column="54" selection-end-line="22" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -415,7 +415,8 @@
       <TodoPanelSettings />
     </option>
     <MESSAGE value="Added constants class. Added library for zmq integration. Added code to subscribe for auction running event and created a publisher for the acknowledgement." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added constants class. Added library for zmq integration. Added code to subscribe for auction running event and created a publisher for the acknowledgement." />
+    <MESSAGE value="Added function to publish the auction running acknowledgement" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added function to publish the auction running acknowledgement" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -434,8 +435,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/InitializeAuctionUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.51965064" vertical-offset="0" max-vertical-offset="687">
-          <caret line="21" column="54" selection-start-line="21" selection-start-column="54" selection-end-line="21" selection-end-column="54" />
+        <state vertical-scroll-proportion="0.5443959" vertical-offset="0" max-vertical-offset="748">
+          <caret line="22" column="54" selection-start-line="22" selection-start-column="54" selection-end-line="22" selection-end-column="54" />
           <folding />
         </state>
       </provider>
