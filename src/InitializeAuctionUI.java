@@ -19,6 +19,13 @@ public class InitializeAuctionUI {
         while(true){
             String auctionRunningEvt = new String(subscriber.recv());
             System.out.println("REC: " + auctionRunningEvt);
+            publishAcknowledgement(auctionRunningEvt);
         }
+    }
+
+    private void publishAcknowledgement(String message){
+        String acknowledgements = "ACK: " + message;
+        publisher.send(acknowledgements.getBytes());
+        System.out.println("ACK SENT...");
     }
 }
