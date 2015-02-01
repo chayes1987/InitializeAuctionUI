@@ -1,3 +1,10 @@
+import java.net.MalformedURLException;
+import org.ektorp.CouchDbConnector;
+import org.ektorp.CouchDbInstance;
+import org.ektorp.http.HttpClient;
+import org.ektorp.http.StdHttpClient;
+import org.ektorp.impl.StdCouchDbConnector;
+import org.ektorp.impl.StdCouchDbInstance;
 import org.jeromq.ZMQ;
 
 /*
@@ -21,7 +28,21 @@ public class InitializeAuctionUI {
             System.out.println("REC: " + auctionRunningEvt);
             publishAcknowledgement(auctionRunningEvt);
             String id = parseMessage(auctionRunningEvt, "<id>", "</id>");
+            AuctionItem item = getItemDetails(id);
         }
+    }
+
+    private AuctionItem getItemDetails(String id) {
+        HttpClient httpClient = null;
+
+        try {
+            httpClient = new StdHttpClient.Builder().url(Constants.COUCH_URL).build();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        CouchDbInstance dbInstance = new StdCouchDbInstance(httpClient);
+        CouchDbConnector db = new StdCouchDbConnector(Constants.DATABASE_NAME, dbInstance);
+        return db.get(AuctionItem.class, id);
     }
 
     private String parseMessage(String message, String startTag, String endTag){
