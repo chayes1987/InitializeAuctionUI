@@ -8,4 +8,5 @@ public class Constants {
     public static final String TOPIC = "AuctionRunning";
     public static final String COUCH_URL = "http://localhost:5984";
     public static final String DATABASE_NAME = "auction_info";
+    public static final String FIREBASE_URL = "https://auctionapp.firebaseio.com/auctions";
 }

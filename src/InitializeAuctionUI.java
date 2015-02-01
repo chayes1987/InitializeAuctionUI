@@ -1,4 +1,6 @@
 import java.net.MalformedURLException;
+import java.util.HashMap;
+import java.util.Map;
 import org.ektorp.CouchDbConnector;
 import org.ektorp.CouchDbInstance;
 import org.ektorp.http.HttpClient;
@@ -6,6 +8,7 @@ import org.ektorp.http.StdHttpClient;
 import org.ektorp.impl.StdCouchDbConnector;
 import org.ektorp.impl.StdCouchDbInstance;
 import org.jeromq.ZMQ;
+import com.firebase.client.*;
 
 /*
     @author Conor Hayes
@@ -28,7 +31,7 @@ public class InitializeAuctionUI {
             System.out.println("REC: " + auctionRunningEvt);
             publishAcknowledgement(auctionRunningEvt);
             String id = parseMessage(auctionRunningEvt, "<id>", "</id>");
-            AuctionItem item = getItemDetails(id);
+            initializeUI(getItemDetails(id));
         }
     }
 
@@ -43,6 +46,24 @@ public class InitializeAuctionUI {
         CouchDbInstance dbInstance = new StdCouchDbInstance(httpClient);
         CouchDbConnector db = new StdCouchDbConnector(Constants.DATABASE_NAME, dbInstance);
         return db.get(AuctionItem.class, id);
+    }
+
+    private void initializeUI(AuctionItem item){
+        Firebase fb = new Firebase(Constants.FIREBASE_URL + "/" + item.get_id());
+        Map<String,Object> auction = new HashMap<String,Object>();
+        auction.put("_id", item.get_id());
+        auction.put("name", item.getName());
+        auction.put("image", item.getImage());
+        auction.put("current_bid", item.getStarting_bid());
+        auction.put("status", "Pending");
+        auction.put("winner", "");
+        try{
+            fb.setValue(auction);
+            Thread.sleep(2000);
+            System.out.println("Auction UI initialized");
+        }catch(Exception e) {
+            System.out.println(e.toString());
+        }
     }
 
     private String parseMessage(String message, String startTag, String endTag){
