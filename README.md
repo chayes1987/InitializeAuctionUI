@@ -28,7 +28,7 @@ None
 
 Created and inserted sample objects:
 
-  curl -i -X POST "http://localhost:5984/auction_info/" \
+    curl -i -X POST "http://localhost:5984/auction_info/" \
 	-H "Content-Type: application/json" \
 	-d '{"_id": "1", "name": "HP Omen", "image": "images/omen/omen1.jpg", "starting_bid": 2000}'
 

@@ -48,8 +48,8 @@
       <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.91690964" vertical-offset="0" max-vertical-offset="1054">
-              <caret line="37" column="4" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.27259475" vertical-offset="0" max-vertical-offset="1054">
+              <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -454,7 +454,8 @@
     <MESSAGE value="Finalized addressing for AWS. Fixed bug in updating item. Updates rather than overwrites." />
     <MESSAGE value="Added _id to item" />
     <MESSAGE value="Added propery file to replace constants class, also properties file for CouchDB. Changes to class to reflect config file. Some formatting. Tested on AWS, successful." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added propery file to replace constants class, also properties file for CouchDB. Changes to class to reflect config file. Some formatting. Tested on AWS, successful." />
+    <MESSAGE value="README formatting" />
+    <option name="LAST_COMMIT_MESSAGE" value="README formatting" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -726,8 +727,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.91690964" vertical-offset="0" max-vertical-offset="1054">
-          <caret line="37" column="4" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.27259475" vertical-offset="0" max-vertical-offset="1054">
+          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
           <folding />
         </state>
       </provider>
