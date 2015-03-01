@@ -1,24 +1,52 @@
+import java.io.FileInputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 import org.jeromq.ZMQ;
+import org.jeromq.ZMQ.*;
 import com.firebase.client.*;
 import org.lightcouch.CouchDbClient;
 
 /*
     @author Conor Hayes
+    The official documentation was consulted for the third party libraries 0mq and Firebase used in this class
+    0mq pub -> https://github.com/zeromq/jeromq/blob/master/src/test/java/guide/pathopub.java
+    0mq sub -> https://github.com/zeromq/jeromq/blob/master/src/test/java/guide/pathosub.java
+    Firebase -> https://www.firebase.com/docs/java-api/javadoc/com/firebase/client/Firebase.html
+    Config -> http://www.mkyong.com/java/java-properties-file-examples/
  */
-public class InitializeAuctionUI {
-    private ZMQ.Context context = ZMQ.context();
-    private ZMQ.Socket publisher = context.socket(ZMQ.PUB);
 
-    public static void main(String[] args) { new InitializeAuctionUI().subscribe(); }
+public class InitializeAuctionUI {
+    private Context _context = ZMQ.context();
+    private Socket _publisher = _context.socket(ZMQ.PUB);
+    private static Properties _config;
+
+    public static void main(String[] args){
+        InitializeAuctionUI ia = new InitializeAuctionUI();
+        _config = ia.readConfig();
+
+        if(_config != null)
+            ia.subscribe();
+    }
+
+    private Properties readConfig() {
+        Properties config = new Properties();
+        try {
+            config.load(new FileInputStream("properties/config.properties"));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return config;
+    }
 
     private void subscribe(){
-        ZMQ.Socket subscriber = context.socket(ZMQ.SUB);
-        subscriber.connect(Constants.SUB_ADR);
-        subscriber.subscribe(Constants.TOPIC.getBytes());
-        System.out.println("SUB: " + Constants.TOPIC);
-        publisher.bind(Constants.PUB_ADR);
+        Socket subscriber = _context.socket(ZMQ.SUB);
+        subscriber.connect(_config.getProperty("SUB_ADR"));
+        String topic = _config.getProperty("TOPIC");
+        subscriber.subscribe(topic);
+        System.out.println("SUB: " + topic);
+        _publisher.bind(_config.getProperty("PUB_ADR"));
 
         while(true){
             String auctionRunningEvt = new String(subscriber.recv());
@@ -35,7 +63,7 @@ public class InitializeAuctionUI {
     }
 
     private void initializeUI(AuctionItem item){
-        Firebase fb = new Firebase(Constants.FIREBASE_URL).child("auctions/" + item.get_id());
+        Firebase fb = new Firebase(_config.getProperty("FIREBASE_URL")).child("auctions/" + item.get_id());
         Map<String,Object> auction = new HashMap<String,Object>();
         auction.put("_id", item.get_id());
         auction.put("name", item.getName());
@@ -59,8 +87,8 @@ public class InitializeAuctionUI {
     }
 
     private void publishAcknowledgement(String message){
-        String acknowledgements = "ACK: " + message;
-        publisher.send(acknowledgements.getBytes());
-        System.out.println("ACK SENT...");
+        String acknowledgement = "ACK " + message;
+        _publisher.send(acknowledgement.getBytes());
+        System.out.println("PUB: " + acknowledgement);
     }
 }
