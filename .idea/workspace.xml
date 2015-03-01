@@ -7,10 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c93ad3bb-ad64-4062-bc6d-fe111b1437c7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/properties/config.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/properties/couchdb.properties" />
-      <change type="DELETED" beforePath="C:\Fourth Year\My_Work\FYP\Development\InitializeAuctionUI\src\main\java\Constants.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/InitializeAuctionUI.java" afterPath="$PROJECT_DIR$/src/main/java/InitializeAuctionUI.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="InitializeAuctionUI.iws" />
@@ -38,13 +35,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="InitializeAuctionUI.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="InitializeAuctionUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/InitializeAuctionUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.16620111" vertical-offset="0" max-vertical-offset="1581">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1581">
               <caret line="14" column="96" selection-start-line="14" selection-start-column="96" selection-end-line="14" selection-end-column="96" />
               <folding />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.91690964" vertical-offset="0" max-vertical-offset="1054">
+              <caret line="37" column="4" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="MarkdownPreviewEditor">
+            <state />
           </provider>
         </entry>
       </file>
@@ -65,6 +75,7 @@
         <option value="$PROJECT_DIR$/src/main/java/Constants.java" />
         <option value="$PROJECT_DIR$/properties/config.properties" />
         <option value="$PROJECT_DIR$/src/main/java/InitializeAuctionUI.java" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -117,6 +128,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="InitializeAuctionUI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="InitializeAuctionUI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="InitializeAuctionUI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="properties" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -428,7 +453,8 @@
     <MESSAGE value="Source files moved" />
     <MESSAGE value="Finalized addressing for AWS. Fixed bug in updating item. Updates rather than overwrites." />
     <MESSAGE value="Added _id to item" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added _id to item" />
+    <MESSAGE value="Added propery file to replace constants class, also properties file for CouchDB. Changes to class to reflect config file. Some formatting. Tested on AWS, successful." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added propery file to replace constants class, also properties file for CouchDB. Changes to class to reflect config file. Some formatting. Tested on AWS, successful." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -674,14 +700,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/properties/couchdb.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24285714" vertical-offset="0" max-vertical-offset="700">
-          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/properties/config.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1424581" vertical-offset="0" max-vertical-offset="716">
@@ -690,12 +708,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/properties/couchdb.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23743017" vertical-offset="0" max-vertical-offset="716">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/InitializeAuctionUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16620111" vertical-offset="0" max-vertical-offset="1581">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1581">
           <caret line="14" column="96" selection-start-line="14" selection-start-column="96" selection-end-line="14" selection-end-column="96" />
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.91690964" vertical-offset="0" max-vertical-offset="1054">
+          <caret line="37" column="4" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
       </provider>
     </entry>
   </component>

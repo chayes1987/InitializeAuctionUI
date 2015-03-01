@@ -34,7 +34,8 @@ Created and inserted sample objects:
 
 	curl -i -X POST "http://localhost:5984/auction_info/" \
 	-H "Content-Type: application/json" \
-	-d '{"_id": "2", "name": "iPhone 6", "image": "images/iPhone6/iphone1.jpg", "starting_bid": 1000}'
+	-d '{"_id": "2", "name": "iPhone 6", "image": "images/iPhone6/iphone1.jpg",
+	"starting_bid": 1000}'
 
 ## Application Setup Required
 
