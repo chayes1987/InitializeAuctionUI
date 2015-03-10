@@ -2,10 +2,10 @@ import java.io.FileInputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
-import org.jeromq.ZMQ;
-import org.jeromq.ZMQ.*;
 import com.firebase.client.*;
 import org.lightcouch.CouchDbClient;
+import org.zeromq.ZMQ;
+import org.zeromq.ZMQ.*;
 
 /*
     @author Conor Hayes
@@ -17,7 +17,8 @@ import org.lightcouch.CouchDbClient;
  */
 
 public class InitializeAuctionUI {
-    private Context _context = ZMQ.context();
+    private Context _context = ZMQ.context(1);
+    
     private Socket _publisher = _context.socket(ZMQ.PUB);
     private static Properties _config;
 
@@ -44,7 +45,7 @@ public class InitializeAuctionUI {
         Socket subscriber = _context.socket(ZMQ.SUB);
         subscriber.connect(_config.getProperty("SUB_ADR"));
         String topic = _config.getProperty("TOPIC");
-        subscriber.subscribe(topic);
+        subscriber.subscribe(topic.getBytes());
         System.out.println("SUB: " + topic);
         _publisher.bind(_config.getProperty("PUB_ADR"));
 
