@@ -6,9 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="BuildServerSettings">
-    <option name="LOGIN" value="" />
-    <option name="SERVER_URL" value="http://buildserver" />
-    <option name="PASSWORD" />
+    <option name="LOGIN" value="ch1987" />
+    <option name="SERVER_URL" value="http://52.16.207.142" />
+    <option name="PASSWORD" value="dfe9dfe2df99df9bdf9adf9fdfdedfde" />
     <option name="REMEMBER_ME" value="true" />
     <option name="USE_IDEA_PROXY_SETTINGS" value="true" />
     <option name="INSPECTIONS_BUILD_TYPE_IDS" />
@@ -31,7 +31,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c93ad3bb-ad64-4062-bc6d-fe111b1437c7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_2_2.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_2_2.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_2_2.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_firebase_firebase_client_jvm_2_0_3.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_firebase_tubesock_0_0_10.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="InitializeAuctionUI.iws" />
@@ -490,7 +494,7 @@
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -546,7 +550,8 @@
     <MESSAGE value="Added propery file to replace constants class, also properties file for CouchDB. Changes to class to reflect config file. Some formatting. Tested on AWS, successful." />
     <MESSAGE value="README formatting" />
     <MESSAGE value="Added dependencies to Maven for CI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added dependencies to Maven for CI" />
+    <MESSAGE value="Updated firebase dependency to Maven for CI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated firebase dependency to Maven for CI" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
