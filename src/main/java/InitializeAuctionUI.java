@@ -63,24 +63,24 @@ public class InitializeAuctionUI {
         return client.find(AuctionItem.class, id);
     }
 
-    private void initializeUI(AuctionItem item){
+    private void initializeUI(AuctionItem item) {
         Firebase fb = new Firebase(_config.getProperty("FIREBASE_URL")).child("auctions/" + item.get_id());
-        Map<String,Object> auction = new HashMap<String,Object>();
+        Map<String, Object> auction = new HashMap<String, Object>();
         auction.put("_id", item.get_id());
         auction.put("name", item.getName());
         auction.put("image", item.getImage());
         auction.put("current_bid", item.getStarting_bid());
         auction.put("status", "Pending");
         auction.put("winner", "");
-        try{
+        try {
             fb.updateChildren(auction);
             Thread.sleep(2000);
             System.out.println("Auction UI initialized");
-        }catch(Exception e) {
+        } catch (Exception e) {
             System.out.println(e.toString());
         }
     }
-
+    
     private String parseMessage(String message, String startTag, String endTag){
         int startIndex = message.indexOf(startTag) + startTag.length();
         String substring = message.substring(startIndex);
