@@ -12,5 +12,15 @@
             <artifactId>lightcouch</artifactId>
             <version>0.1.6</version>
         </dependency>
+        <dependency>
+            <groupId>com.firebase.client</groupId>
+            <artifactId>firebase-client-jvm</artifactId>
+            <version>1.0.8</version>
+        </dependency>
+        <dependency>
+            <groupId>org.zeromq</groupId>
+            <artifactId>jeromq</artifactId>
+            <version>0.3.4</version>
+        </dependency>
     </dependencies>
 </project>
