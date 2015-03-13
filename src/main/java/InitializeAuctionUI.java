@@ -26,8 +26,10 @@ public class InitializeAuctionUI {
         InitializeAuctionUI ia = new InitializeAuctionUI();
         _config = ia.readConfig();
 
-        if(_config != null)
+        if(_config != null) {
+            ia.subscribeToHeartbeat();
             ia.subscribe();
+        }
     }
 
     private Properties readConfig() {
@@ -91,5 +93,25 @@ public class InitializeAuctionUI {
         String acknowledgement = "ACK " + message;
         _publisher.send(acknowledgement.getBytes());
         System.out.println("PUB: " + acknowledgement);
+    }
+
+    private void subscribeToHeartbeat(){
+        new Thread(
+                () -> {
+                    Socket subscriber = _context.socket(ZMQ.SUB);
+                    subscriber.connect(_config.getProperty("HEARTBEAT_ADR"));
+                    String topic = _config.getProperty("CHECK_HEARTBEAT_TOPIC");
+                    subscriber.subscribe(topic.getBytes());
+
+                    while(true){
+                        String checkHeartbeatEvt = new String(subscriber.recv());
+                        System.out.println("REC: " + checkHeartbeatEvt);
+                        String message = _config.getProperty("CHECK_HEARTBEAT_TOPIC_RESPONSE") +
+                                " <params>" + _config.getProperty("SERVICE_NAME") + "</params>";
+                        _publisher.send(message.getBytes());
+                        System.out.println("PUB: " + message);
+                    }
+                }
+        ).start();
     }
 }
