@@ -66,7 +66,8 @@ public class InitializeAuctionUI {
     }
 
     private void initializeUI(AuctionItem item) {
-        Firebase fb = new Firebase(_config.getProperty("FIREBASE_URL")).child("auctions/" + item.get_id());
+        Firebase fb = new Firebase(_config.getProperty("FIREBASE_URL"))
+                .child("auctions/" + item.get_id());
         Map<String, Object> auction = new HashMap<String, Object>();
         auction.put("_id", item.get_id());
         auction.put("name", item.getName());
