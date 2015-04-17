@@ -3,7 +3,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import com.firebase.client.*;
-import org.lightcouch.CouchDbClient;
 import org.zeromq.ZMQ;
 import org.zeromq.ZMQ.*;
 
@@ -56,13 +55,10 @@ public class InitializeAuctionUI {
             System.out.println("REC: " + auctionRunningEvt);
             publishAcknowledgement(auctionRunningEvt);
             String id = parseMessage(auctionRunningEvt, "<id>", "</id>");
-            initializeUI(getItemDetails(id));
+            AuctionItem item = DatabaseManager.getItemDetails(id);
+            if(item != null)
+                initializeUI(item);
         }
-    }
-
-    private AuctionItem getItemDetails(String id) {
-        CouchDbClient client = new CouchDbClient("couchdb.properties");
-        return client.find(AuctionItem.class, id);
     }
 
     private void initializeUI(AuctionItem item) {
