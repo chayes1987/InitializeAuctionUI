@@ -27,8 +27,8 @@ public class InitializeAuctionUI {
         _config = ia.readConfig();
 
         if(_config != null) {
-            ia.subscribeToHeartbeat();
-            ia.subscribe();
+            ia.subToHeartbeat();
+            ia.subToAuctionRunningEvt();
         }
     }
 
@@ -43,16 +43,16 @@ public class InitializeAuctionUI {
         return config;
     }
 
-    private void subscribe(){
-        Socket subscriber = _context.socket(ZMQ.SUB);
-        subscriber.connect(_config.getProperty("SUB_ADR"));
-        String topic = _config.getProperty("TOPIC");
-        subscriber.subscribe(topic.getBytes());
-        System.out.println("SUB: " + topic);
+    private void subToAuctionRunningEvt(){
+        Socket auctionRunningSub = _context.socket(ZMQ.SUB);
+        auctionRunningSub.connect(_config.getProperty("SUB_ADR"));
+        String auctionRunningTopic = _config.getProperty("TOPIC");
+        auctionRunningSub.subscribe(auctionRunningTopic.getBytes());
+        System.out.println("SUB: " + auctionRunningTopic);
         _publisher.bind(_config.getProperty("PUB_ADR"));
 
         while(true){
-            String auctionRunningEvt = new String(subscriber.recv());
+            String auctionRunningEvt = new String(auctionRunningSub.recv());
             System.out.println("REC: " + auctionRunningEvt);
             publishAcknowledgement(auctionRunningEvt);
             String id = parseMessage(auctionRunningEvt, "<id>", "</id>");
@@ -96,21 +96,21 @@ public class InitializeAuctionUI {
         System.out.println("PUB: " + acknowledgement);
     }
 
-    private void subscribeToHeartbeat(){
+    private void subToHeartbeat(){
         new Thread(
                 () -> {
-                    Socket subscriber = _context.socket(ZMQ.SUB);
-                    subscriber.connect(_config.getProperty("HEARTBEAT_ADR"));
-                    String topic = _config.getProperty("CHECK_HEARTBEAT_TOPIC");
-                    subscriber.subscribe(topic.getBytes());
+                    Socket heartbeatSub = _context.socket(ZMQ.SUB);
+                    heartbeatSub.connect(_config.getProperty("HEARTBEAT_ADR"));
+                    String heartbeatTopic = _config.getProperty("CHECK_HEARTBEAT_TOPIC");
+                    heartbeatSub.subscribe(heartbeatTopic.getBytes());
 
                     while(true){
-                        String checkHeartbeatEvt = new String(subscriber.recv());
+                        String checkHeartbeatEvt = new String(heartbeatSub.recv());
                         System.out.println("REC: " + checkHeartbeatEvt);
-                        String message = _config.getProperty("CHECK_HEARTBEAT_TOPIC_RESPONSE") +
+                        String heartbeatResponse = _config.getProperty("CHECK_HEARTBEAT_TOPIC_RESPONSE") +
                                 " <params>" + _config.getProperty("SERVICE_NAME") + "</params>";
-                        _publisher.send(message.getBytes());
-                        System.out.println("PUB: " + message);
+                        _publisher.send(heartbeatResponse.getBytes());
+                        System.out.println("PUB: " + heartbeatResponse);
                     }
                 }
         ).start();
