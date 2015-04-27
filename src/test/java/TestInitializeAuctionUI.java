@@ -1,15 +1,14 @@
 import org.junit.Assert;
 import org.junit.Test;
+import utils.MessageParser;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Properties;
 
 /**
  * @author Conor Hayes
- */
-
-/**
- * This class tests some of the methods in the InitializeAuctionUI class
+ * Test Initialize Auction UI
  */
 public class TestInitializeAuctionUI {
 
@@ -22,18 +21,11 @@ public class TestInitializeAuctionUI {
     @Test
     public void testParseMessage() throws NoSuchMethodException, InvocationTargetException,
             IllegalAccessException {
-        InitializeAuctionUI ui = new InitializeAuctionUI();
-        // Use reflection to gain access to private method
-        Method parseMessage = InitializeAuctionUI.class.getDeclaredMethod("parseMessage",
-                String.class, String.class, String.class);
-        parseMessage.setAccessible(true);
         // Call method and perform assertion
-        String returnValue = (String) parseMessage.invoke(ui, "StartAuction <id>1</id>",
-                "<id>", "</id>");
-        Assert.assertEquals("1", returnValue);
-        returnValue = (String) parseMessage.invoke(ui, "BidPlaced <params>2000</params>",
-                "<params>", "</params>");
-        Assert.assertEquals("2000", returnValue);
+        Assert.assertEquals("1", MessageParser.parseMessage("StartAuction <id>1</id>",
+                "<id>", "</id>"));
+        Assert.assertEquals("2000", MessageParser.parseMessage("BidPlaced <params>2000</params>",
+                "<params>", "</params>"));
     }
 
     /**

@@ -1,4 +1,5 @@
 # InitializeAuctionUI
+
 This is the initialize auction UI service for my FYP. It is written in Java. It uses a 0mq binding and also connects to
 Firebase. It is responsible for initializing the UI on the mobile app when the auction starts.
 

@@ -26,5 +26,8 @@
         <module name="InitializeAuctionUI" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="InitializeAuctionUI" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
