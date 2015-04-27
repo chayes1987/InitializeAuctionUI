@@ -68,7 +68,7 @@ public class ZeroMqBroker implements IBroker {
             String auctionRunningEvt = new String(auctionRunningSub.recv());
             System.out.println("REC: " + auctionRunningEvt);
             publishAcknowledgement(auctionRunningEvt);
-            // Get the item details and write them to Firebase
+            // Get the item details and write them to the database
             String id = MessageParser.parseMessage(auctionRunningEvt, "<id>", "</id>");
             IDatabase database = DatabaseFacade.getDatabase();
             AuctionItem item = database.getItemDetails(id);
