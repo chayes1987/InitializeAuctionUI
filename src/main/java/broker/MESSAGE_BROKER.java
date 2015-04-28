@@ -4,7 +4,7 @@ package broker;
  * @author Conor Hayes
  * Message Broker Enum
  */
-public enum MESSAGE_BROKER {
+public enum Message_Broker {
     ZeroMq
     // Other brokers
 }

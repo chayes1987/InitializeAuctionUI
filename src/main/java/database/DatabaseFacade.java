@@ -15,7 +15,7 @@ public class DatabaseFacade {
      * @return The database to be used
      */
     public static IDatabase getDatabase(){
-        if (Constants.DATABASE == DATABASE_TYPE.CouchDB){
+        if (Constants.DATABASE == Database_Type.CouchDB){
             database = new CouchDatabase();
         }
         // Other Databases may be added
@@ -27,7 +27,7 @@ public class DatabaseFacade {
      * @return The database to be used
      */
     public static IRealtimeDatabase getRealtimeDatabase(){
-        if (Constants.REALTIME_DATABASE == DATABASE_TYPE.Firebase){
+        if (Constants.REALTIME_DATABASE == Database_Type.Firebase){
             realtime_database = new Firebase();
         }
         // Other Databases may be added

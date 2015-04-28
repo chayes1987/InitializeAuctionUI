@@ -14,7 +14,7 @@ public class BrokerFacade {
      * @return The broker to be used
      */
     public static IBroker getBroker(){
-        if (Constants.BROKER == MESSAGE_BROKER.ZeroMq){
+        if (Constants.BROKER == Message_Broker.ZeroMq){
             broker = new ZeroMqBroker();
         }
         // Other Brokers may be added
